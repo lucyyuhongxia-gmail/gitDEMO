@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Undo safely — Git for IB DP CS</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <a class="brand-link" href="../index.html">Git for IB DP CS</a>
+          <span class="tagline">Undo safely</span>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <a href="../situations/index.html">Situations</a>
+          <a href="../cheatsheets/index.html">Cheat Sheets</a>
+          <a href="../troubleshooting/index.html">Troubleshooting</a>
+          <a href="../glossary.html">Glossary</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <header class="page-title">
+        <div class="breadcrumbs">
+          <a href="../index.html">Home</a> / <a href="./index.html">Situations</a> / Undo safely
+        </div>
+        <h1>Undo safely</h1>
+        <p class="tagline">Fix common mistakes without deleting your whole project.</p>
+      </header>
+
+      <article class="content situation">
+        <h2>Objective</h2>
+        <p>Undo changes using the safest tool for the job.</p>
+
+        <div class="callout warning">
+          <strong>Warning:</strong> <code>git reset --hard</code> can delete uncommitted work. Only use it when you are
+          100% sure.
+        </div>
+
+        <h3>Situation A: You staged the wrong file</h3>
+        <p><em>Goal:</em> remove a file from the staging area (keep your edits).</p>
+        <pre><code>git restore --staged path/to/file.py</code></pre>
+
+        <h3>Situation B: You want to discard local edits (not committed)</h3>
+        <p><em>Goal:</em> go back to the last committed version of a file.</p>
+        <pre><code>git restore path/to/file.py</code></pre>
+
+        <h3>Situation C: You made a bad commit that is already pushed</h3>
+        <p><em>Goal:</em> undo by adding a new “reverse” commit (safe for collaboration).</p>
+        <pre><code>git log --oneline
+git revert &lt;commit-sha&gt;</code></pre>
+
+        <h3>VS Code</h3>
+        <ul>
+          <li>Unstage: Source Control → right-click file → Unstage.</li>
+          <li>Discard changes: Source Control → right-click file → Discard Changes.</li>
+          <li>Revert commit: use the terminal (recommended) or VS Code Git history extension if installed.</li>
+        </ul>
+
+        <h3>GitHub</h3>
+        <ul>
+          <li>If the bad commit is in <code>main</code>, prefer <code>git revert</code> and push the revert commit.</li>
+          <li>If you used a Pull Request, you can also “Revert” the PR from GitHub (repo settings permitting).</li>
+        </ul>
+
+        <h3>Check you succeeded</h3>
+        <ul>
+          <li><code>git status</code> matches what you expect (staged vs unstaged).</li>
+          <li>The file content in VS Code matches the version you intended.</li>
+          <li>If reverting, GitHub shows a new commit that undoes the changes.</li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p><a href="./merge-conflicts.html">Next: Merge conflicts</a></p>
+        <p>Ulink College of Shanghai · Lucy Yu</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Merge conflicts — Git for IB DP CS</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <a class="brand-link" href="../index.html">Git for IB DP CS</a>
+          <span class="tagline">Merge conflicts</span>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <a href="../situations/index.html">Situations</a>
+          <a href="../cheatsheets/index.html">Cheat Sheets</a>
+          <a href="../troubleshooting/index.html">Troubleshooting</a>
+          <a href="../glossary.html">Glossary</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <header class="page-title">
+        <div class="breadcrumbs">
+          <a href="../index.html">Home</a> / <a href="./index.html">Situations</a> / Merge conflicts
+        </div>
+        <h1>Merge conflicts</h1>
+        <p class="tagline">Two people edited the same lines. Git needs you to decide the final version.</p>
+      </header>
+
+      <article class="content situation">
+        <h2>Objective</h2>
+        <p>Resolve a merge conflict and finish the merge safely.</p>
+
+        <h3>What a conflict means</h3>
+        <p>Git could not automatically combine changes because the same part of a file changed in different commits.</p>
+
+        <h3>VS Code (recommended)</h3>
+        <ol>
+          <li>Pull or merge and wait for VS Code to show conflicts in Source Control.</li>
+          <li>Open the conflicted file → VS Code shows the merge editor options.</li>
+          <li>Choose the correct result (keep yours, keep theirs, or combine).</li>
+          <li>Save the file.</li>
+          <li>Stage the resolved file(s) and commit the merge.</li>
+        </ol>
+
+        <h3>Command Line (fallback)</h3>
+        <ol>
+          <li>See which files are conflicted:</li>
+        </ol>
+        <pre><code>git status</code></pre>
+        <ol start="2">
+          <li>Edit the file and remove the conflict markers:</li>
+        </ol>
+        <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+your version
+=======
+their version
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-name</code></pre>
+        <ol start="3">
+          <li>Stage and commit:</li>
+        </ol>
+        <pre><code>git add path/to/conflicted-file
+git commit</code></pre>
+
+        <h3>GitHub</h3>
+        <ul>
+          <li>In a Pull Request, GitHub may allow “Resolve conflicts” in the browser for simple cases.</li>
+          <li>For anything non-trivial, resolve locally in VS Code and push the result.</li>
+        </ul>
+
+        <h3>Check you succeeded</h3>
+        <ul>
+          <li><code>git status</code> no longer lists unmerged paths.</li>
+          <li>Your code runs/tests still pass after the merge.</li>
+        </ul>
+
+        <h3>Common issues</h3>
+        <ul>
+          <li>Accidentally left conflict markers in file → search for <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> and remove them.</li>
+          <li>Merged but program breaks → re-open the conflict file and re-check logic/indentation.</li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p><a href="./index.html">Back to situations</a></p>
+        <p>Ulink College of Shanghai · Lucy Yu</p>
+      </div>
+    </footer>
+  </body>
+</html>

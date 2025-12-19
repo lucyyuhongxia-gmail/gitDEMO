@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Daily workflow — Git for IB DP CS</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <a class="brand-link" href="../index.html">Git for IB DP CS</a>
+          <span class="tagline">Daily workflow</span>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <a href="../situations/index.html">Situations</a>
+          <a href="../cheatsheets/index.html">Cheat Sheets</a>
+          <a href="../troubleshooting/index.html">Troubleshooting</a>
+          <a href="../glossary.html">Glossary</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <header class="page-title">
+        <div class="breadcrumbs">
+          <a href="../index.html">Home</a> / <a href="./index.html">Situations</a> / Daily workflow
+        </div>
+        <h1>Daily workflow: edit → stage → commit → push</h1>
+        <p class="tagline">The routine you’ll repeat in every project.</p>
+      </header>
+
+      <article class="content situation">
+        <h2>Objective</h2>
+        <p>Save your work as small commits and back it up to GitHub.</p>
+
+        <h3>Command Line</h3>
+        <ol>
+          <li>See what changed:</li>
+        </ol>
+        <pre><code>git status</code></pre>
+        <ol start="2">
+          <li>Review changes (optional but recommended):</li>
+        </ol>
+        <pre><code>git diff</code></pre>
+        <ol start="3">
+          <li>Stage the files you want in the next commit:</li>
+        </ol>
+        <pre><code>git add path/to/file.py
+# or stage everything changed:
+git add .</code></pre>
+        <ol start="4">
+          <li>Commit with a clear message:</li>
+        </ol>
+        <pre><code>git commit -m "Implement login validation"</code></pre>
+        <ol start="5">
+          <li>Push to GitHub:</li>
+        </ol>
+        <pre><code>git push</code></pre>
+
+        <h3>VS Code</h3>
+        <ol>
+          <li>Open Source Control.</li>
+          <li>Review file diffs by clicking changed files.</li>
+          <li>Stage files using the <code>+</code> icons.</li>
+          <li>Write a commit message → Commit.</li>
+          <li>Sync/Push (depending on your VS Code settings).</li>
+        </ol>
+
+        <h3>GitHub</h3>
+        <ul>
+          <li>Open your repo page → you should see your newest commit at the top.</li>
+          <li>Use “History” to confirm your commits are arriving.</li>
+        </ul>
+
+        <h3>Check you succeeded</h3>
+        <ul>
+          <li><code>git status</code> says “working tree clean”.</li>
+          <li>GitHub shows the new commit and updated files.</li>
+        </ul>
+
+        <h3>Common mistakes</h3>
+        <div class="two-col">
+          <div class="callout warning">
+            <strong>Committing too much at once</strong>
+            <p>Prefer small commits: one change, one message.</p>
+          </div>
+          <div class="callout">
+            <strong>Forgetting to push</strong>
+            <p>A commit on your laptop is not a backup until it’s on GitHub.</p>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p><a href="./undo-safely.html">Next: Undo safely</a></p>
+        <p>Ulink College of Shanghai · Lucy Yu</p>
+      </div>
+    </footer>
+  </body>
+</html>

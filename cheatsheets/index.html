@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cheat Sheets — Git for IB DP CS</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <a class="brand-link" href="../index.html">Git for IB DP CS</a>
+          <span class="tagline">Cheat Sheets</span>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <a href="../situations/index.html">Situations</a>
+          <a href="../cheatsheets/index.html" aria-current="page">Cheat Sheets</a>
+          <a href="../troubleshooting/index.html">Troubleshooting</a>
+          <a href="../glossary.html">Glossary</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <header class="page-title">
+        <div class="breadcrumbs"><a href="../index.html">Home</a> / Cheat Sheets</div>
+        <h1>Cheat Sheets</h1>
+        <p class="tagline">Fast reference for classwork.</p>
+      </header>
+
+      <section class="content situation">
+        <h2>Daily workflow (CLI)</h2>
+        <pre><code>git status
+git add .
+git commit -m "Message"
+git push</code></pre>
+
+        <h2>Branch workflow (CLI)</h2>
+        <pre><code>git switch -c feature/name
+git add .
+git commit -m "Add feature"
+git push -u origin feature/name</code></pre>
+
+        <h2>Undo safely (CLI)</h2>
+        <pre><code># unstage (keep edits)
+git restore --staged file
+
+# discard edits (careful)
+git restore file
+
+# undo a pushed commit safely
+git revert &lt;sha&gt;</code></pre>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Printable tip: use your browser’s print dialog.</p>
+        <p>Ulink College of Shanghai · Lucy Yu</p>
+      </div>
+    </footer>
+  </body>
+</html>

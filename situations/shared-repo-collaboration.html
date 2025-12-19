@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shared repo collaboration — Git for IB DP CS</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <a class="brand-link" href="../index.html">Git for IB DP CS</a>
+          <span class="tagline">Shared repo</span>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <a href="../situations/index.html">Situations</a>
+          <a href="../cheatsheets/index.html">Cheat Sheets</a>
+          <a href="../troubleshooting/index.html">Troubleshooting</a>
+          <a href="../glossary.html">Glossary</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <header class="page-title">
+        <div class="breadcrumbs">
+          <a href="../index.html">Home</a> / <a href="./index.html">Situations</a> / Shared repo collaboration
+        </div>
+        <h1>Collaboration in a shared repo (recommended)</h1>
+        <p class="tagline">Use branches + Pull Requests so you don’t break <code>main</code>.</p>
+      </header>
+
+      <article class="content situation">
+        <h2>Objective</h2>
+        <p>Work with teammates in the same GitHub repository using a safe, repeatable workflow.</p>
+
+        <h2>Class rules (suggested)</h2>
+        <ul>
+          <li>Do not push directly to <code>main</code>.</li>
+          <li>Every change goes through a Pull Request (PR).</li>
+          <li>Pull before you start working each day.</li>
+          <li>One branch per task (small and focused).</li>
+        </ul>
+
+        <h3>Command Line</h3>
+        <ol>
+          <li>Clone the shared repo (first time only):</li>
+        </ol>
+        <pre><code>git clone https://github.com/ORG/REPO.git
+cd REPO</code></pre>
+        <ol start="2">
+          <li>Start each session by syncing <code>main</code>:</li>
+        </ol>
+        <pre><code>git switch main
+git pull</code></pre>
+        <ol start="3">
+          <li>Create a branch for your task:</li>
+        </ol>
+        <pre><code>git switch -c feature/short-description</code></pre>
+        <ol start="4">
+          <li>Work normally (edit → stage → commit):</li>
+        </ol>
+        <pre><code>git status
+git add .
+git commit -m "Add scoreboard screen"</code></pre>
+        <ol start="5">
+          <li>Push your branch to GitHub:</li>
+        </ol>
+        <pre><code>git push -u origin feature/short-description</code></pre>
+        <ol start="6">
+          <li>Open a Pull Request on GitHub (see below), get it reviewed, then merge.</li>
+          <li>After merge, update your local <code>main</code>:</li>
+        </ol>
+        <pre><code>git switch main
+git pull</code></pre>
+
+        <h3>VS Code</h3>
+        <ol>
+          <li>Source Control → “…” menu → Branch → Create Branch…</li>
+          <li>Make changes, then Stage + Commit in Source Control.</li>
+          <li>Publish Branch / Push (button depends on your VS Code version).</li>
+          <li>After the PR is merged, switch back to <code>main</code> and Sync/Pull.</li>
+        </ol>
+
+        <h3>GitHub</h3>
+        <ol>
+          <li>Repo → Pull requests → New pull request.</li>
+          <li>Base: <code>main</code> ← Compare: your branch.</li>
+          <li>Write a clear title and description (what/why/how to test).</li>
+          <li>Request review from a teammate.</li>
+          <li>Merge the PR (usually “Squash and merge” for tidy history).</li>
+          <li>Delete the branch after merging (GitHub offers a button).</li>
+        </ol>
+
+        <h3>Check you succeeded</h3>
+        <ul>
+          <li>Your branch exists on GitHub.</li>
+          <li>A PR shows your commits and files changed.</li>
+          <li>After merge, <code>main</code> contains your changes and teammates can pull them.</li>
+        </ul>
+
+        <h3>Troubleshooting</h3>
+        <ul>
+          <li>
+            “rejected: non-fast-forward” when pushing → run <code>git pull</code> (on the correct branch), resolve
+            conflicts if needed, then push again.
+          </li>
+          <li>
+            “You’re not allowed to push to main” → that’s good; push to a branch and open a PR.
+          </li>
+          <li>
+            Merge conflict in the PR → pull your branch locally, resolve conflicts in VS Code, commit, then push.
+          </li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p><a href="./merge-conflicts.html">Related: Merge conflicts</a></p>
+        <p>Ulink College of Shanghai · Lucy Yu</p>
+      </div>
+    </footer>
+  </body>
+</html>
